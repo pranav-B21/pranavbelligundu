@@ -203,6 +203,39 @@
       font-size: 0.9rem;
       border: 1px solid var(--light);
     }
+
+    .interests {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    }
+
+    .interest-card {
+    background: var(--primary);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+    }
+
+    .interest-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--light);
+    }
+
+    .interest-card i {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+    }
+
+    .interest-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    }
+
     
     @media (max-width: 768px) {
       .hero h1 {
@@ -241,7 +274,7 @@
                 <a href="mailto:pranav.belligundu@utexas.edu" class="social-button" target="_blank">
                     <i class="fas fa-envelope"></i> Email
                 </a>
-                <a href="#" class="social-button" target="_blank">
+                <a href="Pranav Belligundu Resume_2.pdf" class="social-button" target="_blank">
                     <i class="fas fa-file-alt"></i> Resume
                 </a>
             </div>
@@ -255,10 +288,41 @@
                 I'm a student at The University of Texas at Austin. Pursuing a B.S. in Statistics and Data Science plus Mathematics as a double degree with an Entrepreneurship Minor and an Elements of Computing Certificate
             </p>
             <p class="about-text">
-                I've developed various full-stack applications and worked on machine learning projects. I'm particularly interested in image processing, LLMs, integrating AI into everyday applications and developing innovative solutions that make a real impact. When I'm not coding, you can find me playing volleyball, thrifting, or exploring new cafes.
+                I've developed various full-stack applications and worked on machine learning projects. I'm particularly interested in image processing, LLMs, integrating AI into everyday applications and developing innovative solutions that make a real impact. When I'm not coding, you can find me playing volleyball, thrifting, or baking/cooking. If you want to collaborate with or contact me, I'm always open to new ideas and projects!
             </p>
         </div>
     </section>
+
+    <section id="interests" class="section">
+        <h2 class="section-title">My Interests</h2>
+        <div class="interests">
+          <div class="interest-card">
+            <i class="fas fa-database"></i>
+            <h3>Data Synthesis and Analysis</h3>
+          </div>
+          
+          <div class="interest-card">
+            <i class="fas fa-code-branch"></i>
+            <h3>Machine Learning Models</h3>
+          </div>
+
+          <div class="interest-card">
+            <i class="fas fa-layer-group"></i>
+            <h3>Data Engineering</h3>
+          </div>
+          
+          <div class="interest-card">
+            <i class="fas fa-heartbeat"></i>
+            <h3>Bioinformatics</h3>
+          </div>
+        
+          
+          <div class="interest-card">
+            <i class="fas fa-laptop-code"></i>
+            <h3>Hackathons</h3>
+          </div>
+        </div>
+      </section>
 
     <section id="experience" class="section">
         <h2 class="section-title">Experience</h2>
@@ -311,6 +375,24 @@
                     <h3>Entrepreneurs Corner</h3>
                     <p>Business application featuring investor-founder matching using Streamlit, Python, Sci-Kit Learn, Numpy, Pandas, and Matplotlib</p>
                     <a href="https://github.com/pranav-B21/Entrepreneurs-Corner" class="project-button" target="_blank">
+                        View Project <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>BlissBot</h3>
+                    <p>BlissBot is a healthcare and mental health chatbot which leverages LLM and OpenAI API implementation with a Streamlit UI</p>
+                    <a href="https://github.com/pranav-B21/BlissBot" class="project-button" target="_blank">
+                        View Project <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Calory</h3>
+                    <p>BCalory is a web application that helps users track daily caloric intake, provides nutritional information, suggests exercises, and aids in diet balancing. It's built using HTML, CSS, and Django.</p>
+                    <a href="https://github.com/pranav-B21/Calory" class="project-button" target="_blank">
                         View Project <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
