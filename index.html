@@ -1,59 +1,361 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pranav Belligundu</title>
-    <link rel="stylesheet" href="style.css">
+    <base href="." />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Portfolio</title>
+    <style>
+    :root {
+      --primary: #121212;
+      --secondary: #1e1e1e;
+      --light: #ffffff;
+      --accent: #00b894;
+      --dark-gray: #2d2d2d;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+      background: var(--primary);
+      color: var(--light);
+      line-height: 1.6;
+    }
+    
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: white;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .social-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    
+    .social-button {
+      padding: 0.8rem 1.5rem;
+      border: 2px solid var(--light);
+      border-radius: 25px;
+      color: var(--light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .social-button:hover {
+      background: var(--light);
+      color: var(--primary);
+    }
+    
+    .section {
+      padding: 5rem 2rem;
+      background: var(--secondary);
+    }
+    
+    .section:nth-child(odd) {
+      background: var(--dark-gray);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--light);
+    }
+    
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .about-text {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      color: var(--light);
+    }
+    
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: var(--light);
+    }
+    
+    .timeline-item {
+      margin-bottom: 2rem;
+      position: relative;
+      padding: 1rem;
+      background: var(--primary);
+      border-radius: 8px;
+      width: calc(50% - 30px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+    
+    .timeline-item h3 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-item .duration,
+    .timeline-item .location {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-item:nth-child(odd) {
+      margin-left: auto;
+    }
+    
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .project-card {
+      background: var(--primary);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    }
+    
+    .project-content {
+      padding: 1.5rem;
+    }
+    
+    .project-button {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      background: transparent;
+      border: 1px solid var(--light);
+      color: var(--light);
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    .project-button:hover {
+      background: var(--light);
+      color: var(--primary);
+    }
+    
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .skill-tag {
+      background: var(--primary);
+      color: var(--light);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      border: 1px solid var(--light);
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .timeline::before {
+        left: 0;
+      }
+      
+      .timeline-item {
+        width: calc(100% - 30px);
+        margin-left: 30px;
+      }
+    
+      .social-buttons {
+        flex-direction: column;
+      }
+    }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Pranav Belligundu</h1>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Pranav Belligundu</h1>
+            <p>Aspiring Data Scientist & ML/AI Engineer at The University of Texas, Austin</p>
+            <div class="social-buttons">
+                <a href="https://linkedin.com/in/pranav-belligundu/" class="social-button" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/pranav-B21?tab=overview&from=2024-12-01&to=2024-12-29" class="social-button" target="_blank">
+                    <i class="fab fa-github"></i> Github
+                </a>
+                <a href="mailto:pranav.belligundu@utexas.edu" class="social-button" target="_blank">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="#" class="social-button" target="_blank">
+                    <i class="fas fa-file-alt"></i> Resume
+                </a>
+            </div>
+        </div>
+    </section>
 
-        <h2>Education</h2>
-        <p>I'm an Aspiring Data Scientist & ML/AI Engineer at The University of Texas, Austin</p>
-        <p>Pursuing a B.S. in <a href="https://stat.utexas.edu/" target="_blank">Statistics and Data Science</a> plus <a href="https://www.ma.utexas.edu/" target="_blank">Mathematics</a> as a double degree with an Entrepreneurship Minor and an Elements of Computing Certificate</p>
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p class="about-text">
+                I'm a student at The University of Texas at Austin. Pursuing a B.S. in Statistics and Data Science plus Mathematics as a double degree with an Entrepreneurship Minor and an Elements of Computing Certificate
+            </p>
+            <p class="about-text">
+                I've developed various full-stack applications and worked on machine learning projects. I'm particularly interested in image processing, LLMs, integrating AI into everyday applications and developing innovative solutions that make a real impact. When I'm not coding, you can find me playing volleyball, thrifting, or exploring new cafes.
+            </p>
+        </div>
+    </section>
 
+    <section id="experience" class="section">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Machine Learning Intern</h3>
+                <div class="duration">June 2024 - August 2024</div>
+                <div class="location">Awareye, Los Altos, CA</div>
+                <p>Developed real-time license plate recognition system and implemented preprocessing pipeline to enhance OCR accuracy, reducing detection times from ~8 to ~5 second<a href="https://github.com/Awareye/preocr24" target="_blank"> (link).</a>
+                </p>
+            </div>
+            <div class="timeline-item">
+                <h3>Research Intern & TA</h3>
+                <div class="duration">May 2022 - January 2024</div>
+                <div class="location">Stanford Medicine, Palo Alto, CA</div>
+                <p>Led research team analyzing osteoarthritis data, implemented RNA sequencing workflows, and applied advanced models including t-SNE, SVA, and UMAP</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Finance & Marketing Intern</h3>
+                <div class="duration">June 2022 - August 2024</div>
+                <div class="location">Tactyle.io, Cupertino, CA</div>
+                <p>Conducted SWOT analysis across 30 competitors and improved customer engagement by 15% through strategic online media coverage</p>
+            </div>
+        </div>
+    </section>
 
-        <p class="previous-role"> Previous: Software Engineering Intern @ <a href="https://www.awareye.com/" target="_blank">Awareye</a></h2>
-        <ul>
-            <li><a href="https://github.com/Awareye/preocr24" target="_blank">preocr project</a> - Developed application in Python to identify license plate numbers from live blurry video footage using YOLOv8 & PaddleOCR. It includes a preprocessing pipeline to enhance OCR accuracy and an algorithm to rank multiple license plates based on frequency of occurrence. <strong>Tech Stack:</strong> Python, YOLOv8, PaddleOCR.</li>
-        </ul>
-        <p class="previous-role">Previous: Research Intern @ <a href="https://robinsonlab.stanford.edu/" target="_blank">Stanford Medicine Robinson Lab</a></p>
-        <ul>
-            <li>Worked with Dr. Qian Wang to analyze datasets consisting of 23 osteoarthritis, 20 healthy, and 33 rheumatoid-arthritis patients and identified 13 genes that are linked to osteoarthritis. <a href="https://tinyurl.com/smw5z6p9" target="_blank">Abstract</a>  of key findings of my research.</li>
-            <li>I led a team of two research interns to develop an optimal workflow for single-cell RNA sequencing to produce accurate graphs. I analyzed research papers and extracted valuable models like t-SNE, SVA, and UMAP and implemented them in R.</li>
-        </ul>
+    <section id="projects" class="section">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Document Summarizer</h3>
+                    <p>Platform that allows users to summarize any document with the implementation of a Rag Pipeline using Ollama, Langhchain and Streamlit.</p>
+                    <a href="https://github.com/pranav-B21/rag_pipeline" class="project-button" target="_blank">
+                        View Project <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>VitaRize</h3>
+                    <p>Application for visually impaired users that summarizes research papers with text-to-speech functionality using Python, OpenAI, and Googletrans</p>
+                    <a href="https://github.com/pranav-B21/VitaRize" class="project-button" target="_blank">
+                        View Project <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Entrepreneurs Corner</h3>
+                    <p>Business application featuring investor-founder matching using Streamlit, Python, Sci-Kit Learn, Numpy, Pandas, and Matplotlib</p>
+                    <a href="https://github.com/pranav-B21/Entrepreneurs-Corner" class="project-button" target="_blank">
+                        View Project <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h2>My Interests</h3>
-        <ul>
-            <li>Data Synthesis and Analysis</li>
-            <li>Writing Data Models</li>
-            <li>Contributing towards the intersectionality of Health and Computer Science</li>
-            <li>Building Full Stack Applications</li>
-            <li>Participating in Hackathons</li>
-        </ul>
+    <section id="skills" class="section">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">R</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Flask</span>
+            <span class="skill-tag">Streamlit</span>
+        </div>
+    </section>
 
-        <h2>Projects</h2>
-        <ul>
-            <li><a href="https://github.com/pranav-B21/VitaRize" target="_blank">VitaRize</a> - A project aimed at improving the mental health of individuals by providing a platform for monitoring and enhancing well-being through various tools and resources. <strong>Tech Stack:</strong> JavaScript, React, Node.js.</li>
-            <li><a href="https://github.com/pranav-B21/VolunteerHub" target="_blank">VolunteerHub</a> - VolunteerHub is a platform designed to connect volunteers with organizations that need their help. It simplifies the process of finding and signing up for volunteer opportunities, making it easier for people to engage in community service. Built with React and Firebase. <strong>Tech Stack:</strong> TypeScript, JavaScript, React, Firebase.</li>
-            <li><a href="https://github.com/pranav-B21/BlissBot" target="_blank">BlissBot</a> - BlissBot is a chatbot designed to provide users with a pleasant and engaging conversational experience. It leverages machine learning techniques to understand and respond to user inputs intelligently. <strong>Tech Stack:</strong> Python.</li>
-            <li><a href="https://github.com/pranav-B21/Calory" target="_blank">Calory</a> - Calory is a web application designed to help users track their daily caloric intake. It provides nutritional information about foods, suggests exercises to burn calories, and helps users maintain a balanced diet. Built with HTML, CSS, and the Django framework. <strong>Tech Stack:</strong> Python, HTML, CSS, Django.</li>
-            <li><a href="https://github.com/pranav-B21/DishSpotter" target="_blank">DishSpotter</a> - DishSpotter is a machine learning project aimed at identifying and categorizing dishes based on images. It uses image recognition technology to detect and label various types of food. <strong>Tech Stack:</strong> Python.</li>
-            <li><a href="https://github.com/pranav-B21/StreetFighter" target="_blank">StreetFighter</a> - This project is a Java-based game inspired by the classic Street Fighter arcade game. It includes various features such as character selection, different game modes, and multiple difficulty levels. <strong>Tech Stack:</strong> Java.</li>
-            <li><a href="https://github.com/pranav-B21/Entrepreneurs-Corner" target="_blank">Entrepreneurs Corner</a> - Entrepreneurs Corner: Business application with investor-founder matching, AI-powered business assistant, and an advanced model to provide valuable insights and informed investment decisions. Implemented stock market predictions using Linear Regression. <strong>Tech Stack<strong>: Streamlit, Python, Sci-Kit Learn (ML), Numpy, Pandas, Matplotlib</li>
-        </ul>
-
-        <h3>Here are all my links:</h3>
-        <ul>
-            <li><a href="https://www.linkedin.com/in/pranav-belligundu/" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/pranav-B21" target="_blank">GitHub</a></li>
-            <li><a href="https://devpost.com/pranav-belligundu?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav" target="_blank">Devpost</a></li>
-        </ul>
-
-        <p>If you want to collaborate with or contact me(<a href="mailto:pranav.belligundu@utexas.edu">pranav.belligundu@utexas.edu</a>), i'm always open to new ideas and projects!</p>
-
-    </div>
+    <script>
+    const observerOptions = {
+        threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.project-card, .timeline-item').forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        item.style.transition = 'all 0.6s ease-out';
+        observer.observe(item);
+    });
+    </script>
 </body>
 </html>
