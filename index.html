@@ -1,471 +1,595 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <base href="." />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Student Portfolio</title>
-    <style>
-    :root {
-      --primary: #121212;
-      --secondary: #1e1e1e;
-      --light: #ffffff;
-      --accent: #00b894;
-      --dark-gray: #2d2d2d;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    
-    body {
-      background: var(--primary);
-      color: var(--light);
-      line-height: 1.6;
-    }
-    
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      color: white;
-    }
-    
-    .hero-content {
-      max-width: 800px;
-    }
-    
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    
-    .social-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-    
-    .social-button {
-      padding: 0.8rem 1.5rem;
-      border: 2px solid var(--light);
-      border-radius: 25px;
-      color: var(--light);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .social-button:hover {
-      background: var(--light);
-      color: var(--primary);
-    }
-    
-    .section {
-      padding: 5rem 2rem;
-      background: var(--secondary);
-    }
-    
-    .section:nth-child(odd) {
-      background: var(--dark-gray);
-    }
-    
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-      color: var(--light);
-    }
-    
-    .about-content {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    .about-text {
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
-      color: var(--light);
-    }
-    
-    .timeline {
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-    }
-    
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 100%;
-      background: var(--light);
-    }
-    
-    .timeline-item {
-      margin-bottom: 2rem;
-      position: relative;
-      padding: 1rem;
-      background: var(--primary);
-      border-radius: 8px;
-      width: calc(50% - 30px);
-      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-    }
-    
-    .timeline-item h3 {
-      margin-bottom: 0.5rem;
-    }
-    
-    .timeline-item .duration,
-    .timeline-item .location {
-      font-size: 0.9rem;
-      color: #888;
-      margin-bottom: 0.5rem;
-    }
-    
-    .timeline-item:nth-child(odd) {
-      margin-left: auto;
-    }
-    
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .project-card {
-      background: var(--primary);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
-    }
-    
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-    }
-    
-    .project-content {
-      padding: 1.5rem;
-    }
-    
-    .project-button {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      margin-top: 1rem;
-      background: transparent;
-      border: 1px solid var(--light);
-      color: var(--light);
-      text-decoration: none;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-    }
-    
-    .project-button:hover {
-      background: var(--light);
-      color: var(--primary);
-    }
-    
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .skill-tag {
-      background: var(--primary);
-      color: var(--light);
-      padding: 0.5rem 1rem;
-      border-radius: 25px;
-      font-size: 0.9rem;
-      border: 1px solid var(--light);
-    }
-
-    .interests {
-    max-width: 800px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    }
-
-    .interest-card {
-    background: var(--primary);
-    padding: 1.5rem;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: all 0.3s ease;
-    }
-
-    .interest-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--light);
-    }
-
-    .interest-card i {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--accent);
-    }
-
-    .interest-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    }
-
-    
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .timeline::before {
-        left: 0;
-      }
-      
-      .timeline-item {
-        width: calc(100% - 30px);
-        margin-left: 30px;
-      }
-    
-      .social-buttons {
-        flex-direction: column;
-      }
-    }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Pranav Belligundu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #fff;
+            color: #333;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* ── Nav ── */
+        nav {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            z-index: 100;
+            padding: 0 2rem;
+        }
+
+        nav .nav-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 52px;
+        }
+
+        nav .nav-name {
+            font-family: 'Merriweather', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        nav ul a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.88rem;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+        }
+
+        nav ul a:hover {
+            color: #2563eb;
+        }
+
+        /* ── Main wrapper ── */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
+        }
+
+        /* ── Profile section ── */
+        .profile {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+            margin-bottom: 3.5rem;
+        }
+
+        .profile-photo {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .profile-photo img {
+            width: 170px;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #e5e7eb;
+            display: block;
+        }
+
+        .profile-info h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 0.3rem;
+        }
+
+        .profile-info .subtitle {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 0.15rem;
+        }
+
+        .profile-info .institution {
+            font-size: 0.92rem;
+            color: #666;
+            margin-bottom: 1.2rem;
+        }
+
+        .profile-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 170px;
+        }
+
+        .profile-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 0.83rem;
+            transition: all 0.2s;
+            background: #fafafa;
+        }
+
+        .profile-links a:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .profile-bio {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        /* ── Section shared ── */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        section h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #111;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.45rem;
+            margin-bottom: 1.4rem;
+        }
+
+        /* ── Research interests ── */
+        .interests-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .interest-tag {
+            background: #eff6ff;
+            color: #1d4ed8;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid #bfdbfe;
+        }
+
+        /* ── Education ── */
+        .edu-item {
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+            align-items: flex-start;
+        }
+
+        .edu-logo {
+            flex-shrink: 0;
+            width: 42px;
+            height: 42px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #6b7280;
+            border: 1px solid #e5e7eb;
+        }
+
+        .edu-body h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 0.1rem;
+        }
+
+        .edu-body .degree {
+            font-size: 0.88rem;
+            color: #555;
+            margin-bottom: 0.1rem;
+        }
+
+        .edu-body .date {
+            font-size: 0.82rem;
+            color: #888;
+        }
+
+        /* ── Experience ── */
+        .exp-item {
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 1.4rem;
+            align-items: flex-start;
+        }
+
+        .exp-icon {
+            flex-shrink: 0;
+            width: 42px;
+            height: 42px;
+            background: #f0fdf4;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
+        }
+
+        .exp-body h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 0.1rem;
+        }
+
+        .exp-body .role {
+            font-size: 0.88rem;
+            color: #444;
+            margin-bottom: 0.1rem;
+        }
+
+        .exp-body .exp-meta {
+            font-size: 0.82rem;
+            color: #888;
+            margin-bottom: 0.4rem;
+        }
+
+        .exp-body p {
+            font-size: 0.88rem;
+            color: #555;
+            line-height: 1.65;
+        }
+
+        /* ── Papers ── */
+        .paper-item {
+            margin-bottom: 1.6rem;
+            padding-bottom: 1.6rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .paper-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .paper-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 0.25rem;
+            line-height: 1.5;
+        }
+
+        .paper-authors {
+            font-size: 0.85rem;
+            color: #555;
+            margin-bottom: 0.2rem;
+        }
+
+        .paper-authors .me {
+            font-weight: 700;
+            color: #333;
+        }
+
+        .paper-venue {
+            font-size: 0.84rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-badge {
+            display: inline-block;
+            padding: 0.18rem 0.65rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .badge-inprogress {
+            background: #fef9c3;
+            color: #854d0e;
+            border: 1px solid #fde68a;
+        }
+
+        /* ── Projects ── */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .project-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.2rem;
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            border-color: #93c5fd;
+        }
+
+        .project-card h3 {
+            font-size: 0.93rem;
+            font-weight: 700;
+            margin-bottom: 0.45rem;
+            color: #111;
+        }
+
+        .project-card p {
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 0.7rem;
+        }
+
+        .project-card a {
+            font-size: 0.82rem;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .project-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            padding: 1.5rem 2rem;
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .profile {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+nav ul {
+                gap: 1rem;
+            }
+        }
+
+        /* ── Bullet list inside exp/edu ── */
+        .bullet-list {
+            margin: 0.4rem 0 0 1rem;
+            padding: 0;
+            list-style: disc;
+        }
+
+        .bullet-list li {
+            font-size: 0.87rem;
+            color: #555;
+            line-height: 1.65;
+            margin-bottom: 0.15rem;
+        }
+    </style>
 </head>
 <body>
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Pranav Belligundu</h1>
-            <p>Aspiring Data Scientist & ML/AI Engineer at The University of Texas, Austin</p>
-            <div class="social-buttons">
-                <a href="https://linkedin.com/in/pranav-belligundu/" class="social-button" target="_blank">
+
+<nav>
+    <div class="nav-inner">
+        <a class="nav-name" href="#home">Pranav Belligundu</a>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#papers">Papers</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container" id="home">
+
+    <!-- ── Profile ── -->
+    <div class="profile" id="about">
+        <div class="profile-photo">
+            <img src="myself.png" alt="Pranav Belligundu" />
+            <div class="profile-links">
+                <a href="https://linkedin.com/in/pranav-belligundu/" target="_blank">
                     <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
-                <a href="https://github.com/pranav-B21?tab=overview&from=2024-12-01&to=2024-12-29" class="social-button" target="_blank">
-                    <i class="fab fa-github"></i> Github
+                <a href="https://github.com/pranav-B21" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
                 </a>
-                <a href="mailto:pranav.belligundu@utexas.edu" class="social-button" target="_blank">
+                <a href="mailto:pranav.belligundu@utexas.edu">
                     <i class="fas fa-envelope"></i> Email
                 </a>
-                <a href="Pranav Belligundu Resume New.pdf" class="social-button" target="_blank">
-                    <i class="fas fa-file-alt"></i> Resume
+                <a href="Pranav_Belligundu_Resume copy.pdf" target="_blank">
+                    <i class="fas fa-file-alt"></i> Resume / CV
                 </a>
             </div>
         </div>
-    </section>
+        <div class="profile-info">
+            <h1>Pranav Belligundu</h1>
+            <p class="subtitle">B.S. Statistics &amp; Data Science &amp; B.S. Mathematics · Minor in Computer Science</p>
+            <p class="institution">The University of Texas at Austin &nbsp;·&nbsp; Austin, TX</p>
 
-    <section id="about" class="section">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <p class="about-text">
-                I'm a student at The University of Texas at Austin pursuing a B.S. in Statistics and Data Science plus Mathematics as a double degree with an Entrepreneurship Minor and an Elements of Computing Certificate
-            </p>
-            <p class="about-text">
-                I've developed various full-stack applications and worked on machine learning projects. I'm particularly interested in image processing, LLMs, integrating AI into everyday applications and developing innovative solutions that make a real impact. When I'm not coding, you can find me playing volleyball, thrifting, or baking/cooking. If you want to collaborate with or contact me, I'm always open to new ideas and projects!
+            <p class="profile-bio">
+                I'm an undergraduate researcher at UT Austin pursuing a double degree in Statistics &amp; Data Science and Mathematics with a Minor in Computer Science. My research, conducted at the IDEAL Lab under Prof. Joydeep Ghosh, focuses on goal-conditioned reinforcement learning for personalized recommender systems. More broadly, I am interested in contributing to frontier ML/AI — spanning physical intelligence, reinforcement learning, and large language models. I've worked across academic research and industry in ML engineering and software development. Outside of work, I enjoy volleyball and soccer, thrifting, and cooking. I also love films (<a href="https://letterboxd.com/pranavb21/" target="_blank" style="color:#2563eb;text-decoration:none;">Letterboxd</a>) and shoot film photography (<a href="https://www.instagram.com/belli.cam/" target="_blank" style="color:#2563eb;text-decoration:none;">@belli.cam</a>).
             </p>
         </div>
+    </div>
+
+    <!-- ── Research Interests ── -->
+    <section>
+        <h2>Research Interests</h2>
+        <div class="interests-list">
+            <span class="interest-tag">Physical Intelligence</span>
+            <span class="interest-tag">Reinforcement Learning</span>
+            <span class="interest-tag">Frontier LLMs</span>
+            <span class="interest-tag">Recommender Systems</span>
+            <span class="interest-tag">Retrieval-Augmented Generation</span>
+            <span class="interest-tag">Agentic AI</span>
+            <span class="interest-tag">AGI</span>
+            <span class="interest-tag">Machine Learning</span>
+            <span class="interest-tag">Natural Language Processing</span>
+        </div>
     </section>
 
-    <section id="interests" class="section">
-        <h2 class="section-title">My Interests</h2>
-        <div class="interests">
-            
-          <div class="interest-card">
-            <i class="fas fa-robot"></i>
-            <h3>AI Agents</h3>
-          </div>
-            
-          <div class="interest-card">
-            <i class="fas fa-database"></i>
-            <h3>Data Synthesis and Analysis</h3>
-          </div>
-          
-          <div class="interest-card">
-            <i class="fas fa-code-branch"></i>
-            <h3>Machine Learning Models</h3>
-          </div>
+    <!-- ── Education ── -->
+    <section id="education">
+        <h2>Education</h2>
 
-          <div class="interest-card">
-            <i class="fas fa-layer-group"></i>
-            <h3>Data Engineering</h3>
-          </div>
-          
-          <div class="interest-card">
-            <i class="fas fa-heartbeat"></i>
-            <h3>Bioinformatics</h3>
-          </div>
-        
-          
-          <div class="interest-card">
-            <i class="fas fa-laptop-code"></i>
-            <h3>Hackathons</h3>
-          </div>
+        <div class="edu-item">
+            <div class="edu-logo"><i class="fas fa-university"></i></div>
+            <div class="edu-body">
+                <h3>The University of Texas at Austin</h3>
+                <p class="degree">B.S. Statistics &amp; Data Science &amp; B.S. Mathematics (Double Degree)<br>
+                Minor in Computer Science</p>
+                <p class="date">Aug 2023 – May 2027 (expected)</p>
+            </div>
         </div>
-      </section>
 
-    <section id="experience" class="section">
-        <h2 class="section-title">Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>Data Science Intern @ Ticketcity</h3>
-                <div class="duration">January 2025 - Present</div>
-                <div class="location">Austin, TX</div>
-                <p>Built end-to-end ticket pricing solution using BigQuery SQL pipelines, RNN/XGBoost prediction models, and an automated content engine, optimizing inventory management and increasing revenue.</p>
-                </p>
-            </div>
-            <div class="timeline-item">
-                <h3>Data Science Intern @ Hey Bubba</h3>
-                <div class="duration">January 2025 - Present</div>
-                <div class="location">Austin, TX</div>
-                <p>Engineered and deployed comprehensive data processing solutions integrating NLP filtering, Google's Gemini AI for document analysis, and a high-accuracy ML classification system, significantly streamlining business operations.</p>
-                </p>
-            </div>
-            <div class="timeline-item">
-                <h3>Machine Learning Intern @ Awareye</h3>
-                <div class="duration">June 2024 - August 2024</div>
-                <div class="location">Los Altos, CA</div>
-                <p>Developed real-time license plate recognition system and implemented preprocessing pipeline to enhance OCR accuracy, reducing detection times from ~8 to ~5 second<a href="https://github.com/Awareye/preocr24" target="_blank">(link).</a>
-                </p>
-            </div>
-            <div class="timeline-item">
-                <h3>Research Intern & TA @ Stanford Medicine</h3>
-                <div class="duration">May 2022 - January 2024</div>
-                <div class="location">Palo Alto, CA</div>
-                <p>Led research team analyzing osteoarthritis data, implemented RNA sequencing workflows, and applied advanced models including t-SNE, SVA, and UMAP</p>
-            </div>
-            <div class="timeline-item">
-                <h3>Finance & Marketing Intern @ Tactyle.io</h3>
-                <div class="duration">June 2022 - August 2024</div>
-                <div class="location">Cupertino, CA</div>
-                <p>Conducted SWOT analysis across 30 competitors and improved customer engagement by 15% through strategic online media coverage</p>
+        <div class="edu-item">
+            <div class="edu-logo"><i class="fas fa-school"></i></div>
+            <div class="edu-body">
+                <h3>Monta Vista High School</h3>
+                <p class="degree">High School Diploma &nbsp;·&nbsp; Cupertino, CA</p>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="section">
-        <h2 class="section-title">My Projects</h2>
-        <div class="projects">
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>Medimatch</h3>
-                    <p>Built an in-house ML model to predict and detect sicknesses and illnesses based on specific markers from large datasets using Decision Trees and Random Forest.</p>
-                    <a href="https://github.com/texasluminescence/medimatch" class="project-button" target="_blank">
-                        View Project <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
+    <!-- ── Experience ── -->
+    <section id="experience">
+        <h2>Experience</h2>
+
+        <div class="exp-item">
+            <div class="exp-body">
+                <h3>Machine Learning Undergraduate Researcher — UT Austin IDEAL Lab</h3>
+                <p class="exp-meta">Sept 2025 – Present &nbsp;·&nbsp; Austin, TX</p>
+                <ul class="bullet-list">
+                    <li>Research under Prof. Joydeep Ghosh and Shijun Li on goal-conditioned RL for personalized recommender systems</li>
+                    <li>Model trained with PPO and retrieved-token masking to autonomously query user histories and item metadata</li>
+                    <li>Ran large-scale CUDA experiments while fine-tuning parameters to improve accuracy and overall training quality</li>
+                </ul>
             </div>
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>Document Summarizer</h3>
-                    <p>Platform that allows users to summarize any document with the implementation of a Rag Pipeline using Ollama, Langhchain and Streamlit.</p>
-                    <a href="https://github.com/pranav-B21/rag_pipeline" class="project-button" target="_blank">
-                        View Project <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-body">
+                <h3>Software Engineering Intern — Briq</h3>
+                <p class="exp-meta">Jun 2025 – Aug 2025 &nbsp;·&nbsp; Remote</p>
+                <ul class="bullet-list">
+                    <li>Developed and deployed integration tests across 10+ microservices for an AI-powered invoice processing platform</li>
+                    <li>Automated REST API validation with Postman, verifying 100+ document payloads, cutting QA time by 60%</li>
+                    <li>Reduced release rollbacks 20% through GitLab CI/CD pipeline optimizations that improved deployment reliability</li>
+                </ul>
             </div>
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>VitaRize</h3>
-                    <p>Application for visually impaired users that summarizes research papers with text-to-speech functionality using Python, OpenAI, and Googletrans</p>
-                    <a href="https://github.com/pranav-B21/VitaRize" class="project-button" target="_blank">
-                        View Project <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-body">
+                <h3>Machine Learning Engineer Intern — Innoflexion</h3>
+                <p class="exp-meta">May 2025 – Jul 2025 &nbsp;·&nbsp; San Francisco, CA</p>
+                <ul class="bullet-list">
+                    <li>Led two interns to develop a feature in DeepRoot, a platform that prepares enterprise data for GenAI use cases</li>
+                    <li>Developed an MoE architecture that routed structured and unstructured data across 30+ LLMs/SLMs with vLLM</li>
+                    <li>Formulated Data Readiness Index framework that evaluated quality, structure, security, and fairness of input data</li>
+                </ul>
             </div>
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>Entrepreneurs Corner</h3>
-                    <p>Business application featuring investor-founder matching using Streamlit, Python, Sci-Kit Learn, Numpy, Pandas, and Matplotlib</p>
-                    <a href="https://github.com/pranav-B21/Entrepreneurs-Corner" class="project-button" target="_blank">
-                        View Project <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>BlissBot</h3>
-                    <p>BlissBot is a healthcare and mental health chatbot which leverages LLM and OpenAI API implementation with a Streamlit UI</p>
-                    <a href="https://github.com/pranav-B21/BlissBot" class="project-button" target="_blank">
-                        View Project <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>Calory</h3>
-                    <p>Calory is a web application that helps users track daily caloric intake, provides nutritional information, suggests exercises, and aids in diet balancing. It's built using HTML, CSS, and Django.</p>
-                    <a href="https://github.com/pranav-B21/Calory" class="project-button" target="_blank">
-                        View Project <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-body">
+                <h3>Data Science Research Intern / TA — Stanford Medicine</h3>
+                <p class="exp-meta">May 2022 – Jan 2024 &nbsp;·&nbsp; Palo Alto, CA</p>
+                <ul class="bullet-list">
+                    <li>Processed and analyzed RNA-seq data from 76 osteoarthritis patients in R to determine valuable biological insights</li>
+                    <li>Used t-SNE, SVA, and UMAP to extract biological signals and identified 13 genes associated with osteoarthritis</li>
+                    <li>Designed an optimized single-cell RNA-seq workflow and wrote a paper documenting the methodology/results</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="section">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">R</span>
-            <span class="skill-tag">C++</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">Deep Learning</span>
-            <span class="skill-tag">Machine Learning</span>
-            <span class="skill-tag">OOP</span>
-            <span class="skill-tag">API</span>
-            <span class="skill-tag">Streamlit</span>
-            <span class="skill-tag">Leadership + Public Speaking</span>
+    <!-- ── Papers ── -->
+    <section id="papers">
+        <h2>Papers</h2>
+
+        <div class="paper-item">
+            <p class="paper-title">Integrating Collaborative and Meta-Information Retrieval with Reasoning: An End-to-End Framework for LLM-Based Recommendation</p>
+            <p class="paper-authors">Shijun Li, Joydeep Ghosh, <span class="me">Pranav Belligundu</span></p>
+            <span class="paper-badge badge-inprogress">In Progress</span>
         </div>
     </section>
 
-    <script>
-    const observerOptions = {
-        threshold: 0.1
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    document.querySelectorAll('.project-card, .timeline-item').forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(20px)';
-        item.style.transition = 'all 0.6s ease-out';
-        observer.observe(item);
-    });
-    </script>
+    <!-- ── Projects ── -->
+    <section id="projects">
+        <h2>Selected Projects</h2>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <h3>Apanto</h3>
+                <p>LLM router that intelligently routes prompts across commercial APIs and Hugging Face models. Full-stack app (React + FastAPI) tracking latency, cost, and usage across 20+ models.</p>
+                <p style="font-size:0.78rem;color:#888;margin-bottom:0.5rem;">Python · React · FastAPI · PostgreSQL · MongoDB · vLLM · CUDA</p>
+                <a href="https://github.com/pranav-B21/Apanto" target="_blank"><i class="fas fa-external-link-alt"></i> View on GitHub</a>
+            </div>
+
+            <div class="project-card">
+                <h3>VitaRize <span style="font-size:0.75rem;color:#16a34a;font-weight:400;">· 2nd / 160 at Cisco BridgeHacks</span></h3>
+                <p>Accessibility app that summarizes articles with text-to-speech for visually impaired individuals. Marketed to 10+ users improving content accessibility.</p>
+                <p style="font-size:0.78rem;color:#888;margin-bottom:0.5rem;">Python · Streamlit · PyTorch · Googletrans</p>
+                <a href="https://github.com/pranav-B21/VitaRize" target="_blank"><i class="fas fa-external-link-alt"></i> View on GitHub</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Medimatch</h3>
+                <p>ML model to predict and detect sicknesses based on patient markers using Decision Trees and Random Forest.</p>
+                <p style="font-size:0.78rem;color:#888;margin-bottom:0.5rem;">Python · Scikit-learn · Pandas</p>
+                <a href="https://github.com/texasluminescence/medimatch" target="_blank"><i class="fas fa-external-link-alt"></i> View on GitHub</a>
+            </div>
+
+        </div>
+    </section>
+
+
+</div>
+
+<footer>
+    &copy; 2025 Pranav Belligundu &nbsp;·&nbsp; pranav.belligundu@utexas.edu
+</footer>
+
 </body>
 </html>
